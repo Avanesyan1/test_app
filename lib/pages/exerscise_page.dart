@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:test_app/model/exercise_Info.dart';
 
 class Exerscise_Page extends StatefulWidget {
@@ -57,8 +56,7 @@ class _Exerscise_PageState extends State<Exerscise_Page> {
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: Container(
-              child:Column(
+            child: Column(
                 children: [
                     Align(
                     alignment: Alignment.topLeft,  
@@ -84,7 +82,6 @@ class _Exerscise_PageState extends State<Exerscise_Page> {
               )],
               ),
             ),
-          ),
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: TextButton(
