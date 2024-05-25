@@ -7,25 +7,21 @@ class TestPage extends StatefulWidget {
   const TestPage({super.key});
 
   @override
-
   _TestPageState createState() => _TestPageState();
 }
-
 class _TestPageState extends State<TestPage> {
   List<int> selectedAnswers = List.filled(questions.length, -1);
   bool answer = false;
   
- 
   @override
-   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
            padding: const EdgeInsets.only(left: 20),
            child: Container(
-                    width: 40,  
-                    height: 40,
+                    width: MediaQuery.of(context).size.width * 0.08,  
+                    height: MediaQuery.of(context).size.height * 0.08,
                     decoration: const BoxDecoration(
                       color: Color.fromRGBO(243, 243, 243, 1), 
                       shape: BoxShape.circle,
@@ -54,15 +50,15 @@ class _TestPageState extends State<TestPage> {
           } else {
             return Padding(
               padding: const EdgeInsets.all(20.0),
-              child: Container(
-                width: 358,
-                height: 56,
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: MediaQuery.of(context).size.height * 0.08,
                 child: TextButton(
                   style: ButtonStyle(
                     shape: MaterialStateProperty.all(
                       RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10))),
-                    backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(118, 212, 103, 1))),
+                        backgroundColor: MaterialStateProperty.all(const Color.fromRGBO(118, 212, 103, 1))),
                   child: Text(answer ?'Тест пройден, молодец!':'Пройти тест',style: const TextStyle(color: Colors.white,fontSize:17),),
                   onPressed:() {
                     int correctAnswers = 0;
@@ -73,7 +69,6 @@ class _TestPageState extends State<TestPage> {
                     }
                     setState(() {
                     answer = correctAnswers == questions.length;
-                
                     });
                     showModalBottomSheet(
                       backgroundColor: const Color.fromRGBO(129, 93, 234, 1),

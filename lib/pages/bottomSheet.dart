@@ -16,14 +16,14 @@ class MyCustomBottomSheet extends StatelessWidget {
                                         ],
                                       )
                                 ),
-              height: (answer ? 420: 350),
+              height: (answer ? MediaQuery.of(context).size.height * 0.6: MediaQuery.of(context).size.height * 0.5),
               width: double.infinity,
               child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                           SizedBox(
-                              width: 500,
-                              height:200,
+                             SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              height: MediaQuery.of(context).size.height * 0.25,
                               child: Image.asset(answer ?'assets/hand.png':'assets/list.png')),
                               Text(answer ? 'Тест пройден!' : 'Тест не пройден :(',
                                    style: GoogleFonts.inter(textStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 27)),),
@@ -51,7 +51,7 @@ class MyCustomBottomSheet extends StatelessWidget {
                                       )
                                     ):const SizedBox.shrink(),
                               SizedBox(
-                                height: 80,
+                                height: MediaQuery.of(context).size.height * 0.1,
                                 width: double.infinity,
                                 child: Padding(
                                   padding: const EdgeInsets.fromLTRB(20,10,20,10),

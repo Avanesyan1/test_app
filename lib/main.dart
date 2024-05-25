@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       initialRoute: 'exersice_page',
       routes: {
         'exersice_page':(context) => Exerscise_Page(),
-        'test_page':(context) => TestPage(),
+        'test_page':(context) => const TestPage(),
       },
     );
   }

@@ -22,16 +22,18 @@ class _MyCustomTestZoneState extends State<MyCustomTestZone> {
             elevation: 0,
             child: Column(
               children: [
-                Row(
-                  children: [
-                      Text(questions[widget.questionIndex].question[0][0], 
-                        style: GoogleFonts.inter(textStyle: const TextStyle(fontWeight: FontWeight.bold,color: Colors.black, fontSize: 15))),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Text(questions[widget.questionIndex].question[1][0], 
-                                 style: GoogleFonts.inter(textStyle: const TextStyle(fontWeight: FontWeight.bold,color: Colors.black, fontSize: 15))),
-                      ),
-                  ],
+                IntrinsicHeight(
+                  child: Row(
+                    children: [
+                        Text(questions[widget.questionIndex].question[0][0], 
+                          style: GoogleFonts.inter(textStyle: const TextStyle(fontWeight: FontWeight.bold,color: Colors.black, fontSize: 15))),
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Text(questions[widget.questionIndex].question[1][0], 
+                                   style: GoogleFonts.inter(textStyle: const TextStyle(fontWeight: FontWeight.bold,color: Colors.black, fontSize: 15))),
+                        ),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 10,),
                 ...List.generate(questions[widget.questionIndex].option.length, (optionIndex) {
@@ -46,33 +48,47 @@ class _MyCustomTestZoneState extends State<MyCustomTestZone> {
                       children: [
                           Expanded(
                               flex: 15,
-                              child: Container(
-                                width: 77,
-                                height: 77,
-                                margin: const EdgeInsets.only(top: 3,bottom: 3,right: 3),
-                                decoration: BoxDecoration(
-                                  color: widget.selectedAnswers[widget.questionIndex] == optionIndex 
-                                        ? const Color.fromRGBO(129, 93, 234, 1) 
-                                        : const Color.fromARGB(96, 209, 209, 209),
-                                  borderRadius: BorderRadius.circular(16),
-                                            ),
-                                child:Center(
-                                  child: Text(entry.key,
-                                      style: GoogleFonts.inter(
-                                        textStyle: TextStyle(
-                                              fontSize: 22,
-                                              color: widget.selectedAnswers[widget.questionIndex] == optionIndex 
-                                                    ? Colors.white : const Color.fromRGBO(137, 138, 141, 1),
-                                                    )
-                                               )
+                              child: Center(
+                                child: Container(
+                                  constraints: BoxConstraints(
+                                    minHeight: MediaQuery.of(context).size.width * 0.15,
+                                    minWidth: MediaQuery.of(context).size.height * 0.15,
+                                    maxHeight: double.infinity,
+                                    maxWidth: double.infinity
+                                  ),
+                                  margin: const EdgeInsets.only(top: 3,bottom: 3,right: 3),
+                                  decoration: BoxDecoration(
+                                    color: widget.selectedAnswers[widget.questionIndex] == optionIndex 
+                                          ? const Color.fromRGBO(129, 93, 234, 1) 
+                                          : const Color.fromARGB(96, 209, 209, 209),
+                                    borderRadius: BorderRadius.circular(16),
+                                              ),
+                                  child:Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Center(
+                                      child: Text(entry.key,
+                                          style: GoogleFonts.inter(
+                                            textStyle: TextStyle(
+                                                  fontSize: 22,
+                                                  color: widget.selectedAnswers[widget.questionIndex] == optionIndex 
+                                                        ? Colors.white : const Color.fromRGBO(137, 138, 141, 1),
+                                                        )
+                                                   )
+                                              ),
                                           ),
-                                      )
-                                     ),
+                                  )
+                                       ),
+                              ),
                           ),
                           Expanded(
                             flex: 50,
                             child: Container(
-                              height: 77,
+                              constraints: BoxConstraints(
+                                minWidth:  MediaQuery.of(context).size.height * 0.09,
+                                minHeight:  MediaQuery.of(context).size.height * 0.09,
+                                maxHeight: double.infinity,
+                                maxWidth: double.infinity
+                              ),
                               margin: const EdgeInsets.only(top :3, bottom: 3),
                               decoration: BoxDecoration(
                                 color: widget.selectedAnswers[widget.questionIndex] == optionIndex 
@@ -80,12 +96,15 @@ class _MyCustomTestZoneState extends State<MyCustomTestZone> {
                                       : const Color.fromARGB(96, 209, 209, 209),
                                 borderRadius: BorderRadius.circular(16),
                               ),
-                              child:Center(
-                                child: Text(entry.value,
-                                    style: GoogleFonts.inter(textStyle: TextStyle(
-                                      color: widget.selectedAnswers[widget.questionIndex] == optionIndex 
-                                            ? Colors.white : Colors.black,
-                                    ))
+                              child:Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Center(
+                                  child: Text(entry.value,
+                                      style: GoogleFonts.inter(textStyle: TextStyle(
+                                        color: widget.selectedAnswers[widget.questionIndex] == optionIndex 
+                                              ? Colors.white : Colors.black,
+                                      ))
+                                  ),
                                 ),
                               )
                         )
